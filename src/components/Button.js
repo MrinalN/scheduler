@@ -3,15 +3,12 @@ import classNames from "classnames";
 
 import "components/Button.scss";
 
-// classNames({ foo: true }, { bar: true });
-//.confrim
-//.base
-//.danger
-//.clickable
-//.disabled
-
 export default function Button(props) {
-   let buttonClass = "button"
+   let buttonClass = classNames('button', 
+   { 'button--confirm': props.confirm, 
+   'button--danger': props.danger 
+   });
+
 
    if (props.confirm) {
       buttonClass += " button--confirm"
