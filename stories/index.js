@@ -15,6 +15,7 @@ import Appointment from "components/Appointment/index.js"
 import Header from "components/Appointment/Header.js"
 import Empty from "components/Appointment/Empty.js"
 import Show from "components/Appointment/Show.js"
+import Confirm from "components/Appointment/Confirm.js"
 
 
 //input data
@@ -167,3 +168,16 @@ storiesOf("Button", module)
       onDelete={action("onDelete")} 
     />
   ))
+
+  .add("Confirm", () => (
+    <Confirm 
+      message={"Delete the appointment?"}
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")} 
+    />
+  ))
+
+
+//   message:String eg. "Delete the appointment?"
+// onConfirm:Function to be called when the user clicks the Confirm button
+// onCancel:Function to be called when the user clicks the Cancel button
