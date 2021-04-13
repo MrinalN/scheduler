@@ -6,14 +6,13 @@ export default function InterviewerListItem (props) {
   const { name, avatar, selected, setInterviewer } = props;
 
     let interviewersListItemClass = classNames('interviewers__item', {
-    'interviewers__item--selected': selected,
-    'interviewers__item-image': avatar
+    'interviewers__item--selected': selected
   })
 
   return (
     <li className={interviewersListItemClass} onClick={setInterviewer}>
     <img
-      className={interviewersListItemClass}
+      className={'interviewers__item-image'}
       src={avatar}
       alt={name}
     />
