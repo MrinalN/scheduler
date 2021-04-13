@@ -130,14 +130,14 @@ storiesOf("Button", module)
   .add("Initial", () => (
     <InterviewerList
       interviewers={interviewers}
-      setInterviewer={action("setInterviewer")}
+      onChange={action("setInterviewer")}
     />
   ))
   .add("Preselected", () => (
     <InterviewerList
       interviewers={interviewers}
       interviewer={3}
-      setInterviewer={action("setInterviewer")}
+      onChange={action("setInterviewer")}
     />
   ));
 
@@ -189,3 +189,10 @@ storiesOf("Button", module)
     onClose={action("onClose")}
     />
   ))
+
+
+//   name:String
+// interviewers:Array
+// interviewer:Number
+// onSave:Function
+// onCancel:Function
