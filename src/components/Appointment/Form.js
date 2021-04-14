@@ -3,12 +3,24 @@ import React, { useState } from "react";
 import InterviewerList from "../InterviewerList";
 import Button from "../Button"
 
+//FORM PROPS
+// .add("Edit", () => (
+//   <Form 
+//   name={"Lydia Miller-Jones"}
+//   interviewers={interviewers}
+//   interviewer={interviewer.id}
+//   onSave={action("onSave")}
+//   onCancel={action("onCancel")}
+//   />
+// ))
 
-// name={"Lydia Miller-Jones"}
-// interviewers={interviewers}
-// interviewer={1}
-// onSave={action("onSave")}
-// onCancel={action("onCancel")}
+// .add("Create", () => (
+//   <Form 
+//   interviewers={interviewers}
+//   onSave={action("onSave")}
+//   onCancel={action("onCancel")}
+//   />
+// ))
 
 export default function Form (props) {
   // const {name, interviewers, interviewer, onSave, onCancel} = props;
@@ -33,7 +45,10 @@ export default function Form (props) {
         */
       />
     </form>
-    <InterviewerList interviewers={props.interviewers} value={interviewer} onChange={setInterviewer} />
+    <InterviewerList 
+    interviewers={props.interviewers} 
+    value={interviewer} 
+    onChange={setInterviewer} />
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">

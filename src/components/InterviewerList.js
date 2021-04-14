@@ -2,6 +2,21 @@ import React from 'react';
 import InterviewerListItem from "components/InterviewerListItem";
 import "components/InterviewerList.scss";
 
+//INTERVIEWER LIST PROPS
+// .add("Initial", () => (
+//   <InterviewerList
+//     interviewers={interviewers}
+//     onChange={action("setInterviewer")}
+//   />
+// ))
+// .add("Preselected", () => (
+//   <InterviewerList
+//     interviewers={interviewers}
+//     interviewer={3}
+//     onChange={action("setInterviewer")}
+//   />
+// ));
+
 export default function InterviewerList (props) {
   // const { id, name, avatar, selected } = props;
   const parsedInterviewers = props.interviewers.map(interviewer => {
