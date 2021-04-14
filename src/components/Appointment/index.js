@@ -11,12 +11,21 @@ import './styles.scss';
 
 export default function Appointment (props) {
   const { time, interview } = props;
-  const variable = interview ? <Show /> : <Empty />
+
+  // const variable = interview ? <Show /> : <Empty />
   return(
     <article className="appointment">
       <Header time={time}/>
 
-      {variable}
+    {interview && <Show 
+    student={interview.student}
+    interviewer={interview.interviewer}
+    />}
+
+    {/* {!interview && <Empty 
+    
+    />} */}
+      {/* {variable} */}
     </article>
 
     
