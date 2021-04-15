@@ -1,4 +1,5 @@
 // import React from "react";
+import { getAppointmentsForDay } from "helpers/selectors";
 import React, { useState, useEffect } from "react";
 
 import "./Application.scss";
@@ -13,15 +14,14 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
     appointments: {}
   });
   
   const setDay = day => setState({ ...state, day });
-  // const setDays = days => setState(prev => ({ ...prev, days }));
 
-  const dailyAppointments = [];
-
+  //displays daily appointments 
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+ 
   
 
   useEffect(() => {
