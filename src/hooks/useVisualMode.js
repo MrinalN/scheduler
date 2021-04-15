@@ -10,12 +10,13 @@ export default function useVisualMode (initial) {
   }
   
   function back() {
-    console.log(history)
-     const newArr = [...history]
-    console.log(newArr)
-     newArr.pop()
-     setMode(newArr[newArr.length - 1])
-     setHistory(newArr)
+    
+      const newArr = [...history]
+      
+      newArr.length > 1 ? newArr.pop() : newArr
+      
+      setMode(newArr[newArr.length - 1])
+      setHistory(newArr)
   }
   return {mode, transition, back}
 }
