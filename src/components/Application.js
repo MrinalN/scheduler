@@ -1,13 +1,13 @@
-// import React from "react";
-import { getAppointmentsForDay } from "helpers/selectors";
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 import "./Application.scss";
 import Appointment from "./Appointment/index.js";
 import DayList from "./DayList";
 
 
-const axios = require('axios');
+// const axios = require('axios');
 
 
 export default function Application(props) {
@@ -42,12 +42,22 @@ export default function Application(props) {
         interviewers: all[2].data 
       }));
     });
+    
   }, [])
 
 
-  const parsedAppointments = dailyAppointments.map(appointment => (
-    <Appointment key={appointment.id} {...appointment} />
-    ))
+  const parsedAppointments = dailyAppointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview);
+
+    return <Appointment 
+    key={appointment.id} 
+    {...appointment} 
+    id={appointment.id}
+    time={appointment.time}
+    interview={interview}
+    />
+  })
+    
   return (
     <main className="layout">
       <section className="sidebar">
@@ -75,7 +85,9 @@ export default function Application(props) {
       <section className="schedule">
           <li>
             {parsedAppointments}
-            <Appointment key="last" time="5pm" />
+            <Appointment 
+            key="last" 
+            time="5pm" />
           </li>
       </section>
     </main>
