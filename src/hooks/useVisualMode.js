@@ -6,19 +6,18 @@ export default function useVisualMode (initial) {
 
   function transition (nextMode, replace = false) { 
     setMode(nextMode)
-    // setHistory(prev => ([...prev, nextMode]))
-
     replace === true ? setHistory (prev => ([...prev])) : setHistory(prev => ([...prev, nextMode])) 
   }
   
   function back() {
     
-      const newArr = [...history]
+      const newArr = [...history];
       
-      newArr.length > 1 ? newArr.pop() : newArr
-      
-      setMode(newArr[newArr.length - 1])
-      setHistory(newArr)
+      // newArr.length > 1 ? newArr.pop() : console.log(`can't go back!`);
+      newArr.length > 1 && newArr.pop();
+
+      setMode(newArr[newArr.length - 1]);
+      setHistory(newArr);
   }
   return {mode, transition, back}
 }
