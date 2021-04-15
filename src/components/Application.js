@@ -5,71 +5,9 @@ import "./Application.scss";
 import Appointment from "./Appointment/index.js";
 import DayList from "./DayList";
 
-const axios = require('axios');
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
 
-const appointments = [
-  {
-    id: 1,
-    time: "12pm",
-  },
-  {
-    id: 2,
-    time: "1pm",
-    interview: {
-      student: "Lydia Miller-Jones",
-      interviewer: {
-        id: 1,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      }
-    }
-  },
-  {
-    id: 3,
-    time: "12pm",
-  },
-  {
-    id: 4,
-    time: "3pm",
-    interview: {
-      student: "Bob Dylan",
-      interviewer: {
-        id: 1,
-        name: "Mildred Nazir",
-        avatar: "https://i.imgur.com/twYrpay.jpg",
-      }
-    }
-  },
-  {
-    id: 5,
-    time: "11am",
-    interview: {
-      student: "Archie Bunker",
-      interviewer: {
-        id: 1,
-        name: "Sven Jones",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      }
-    }
-  }
-];
+const axios = require('axios');
+
 
 export default function Application(props) {
   const [state, setState] = useState({
@@ -80,19 +18,31 @@ export default function Application(props) {
   });
   
   const setDay = day => setState({ ...state, day });
-  const setDays = days => setState(prev => ({ ...prev, days }));
+  // const setDays = days => setState(prev => ({ ...prev, days }));
+
+  const dailyAppointments = [];
+
+  
 
   useEffect(() => {
-    const daysURL = '/api/days';
-    axios.get(daysURL).then(response => {
-      console.log(response);
-      setDays([...response.data])
+
+    let getDays = '/api/days'
+    let getAppointments = '/api/appointments'
+    let getInterviewers = '/api/interviewers'
+
+    const promise1 = axios.get(getDays);
+    const promise2 = axios.get(getAppointments);
+    const promise3 = axios.get(getInterviewers);
+
+    Promise.all([promise1, promise2, promise3]).then((all) => {
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     });
   }, [])
 
-  const parsedAppointments = appointments.map(appointment => 
+
+  const parsedAppointments = dailyAppointments.map(appointment => (
     <Appointment key={appointment.id} {...appointment} />
-    )
+    ))
   return (
     <main className="layout">
       <section className="sidebar">
