@@ -30,12 +30,17 @@ export default function Application(props) {
     let getAppointments = '/api/appointments'
     let getInterviewers = '/api/interviewers'
 
-    const promise1 = axios.get(getDays);
-    const promise2 = axios.get(getAppointments);
-    const promise3 = axios.get(getInterviewers);
-
-    Promise.all([promise1, promise2, promise3]).then((all) => {
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
+    Promise.all([
+      axios.get(getDays), 
+      axios.get(getAppointments), 
+      axios.get(getInterviewers)
+    ])
+    .then((all) => {
+      setState(prev => ({...prev, 
+        days: all[0].data, 
+        appointments: all[1].data, 
+        interviewers: all[2].data 
+      }));
     });
   }, [])
 
