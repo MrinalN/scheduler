@@ -5,6 +5,7 @@ import Show from 'components/Appointment/Show.js';
 import Empty from 'components/Appointment/Empty.js';
 import Form from 'components/Appointment/Form.js';
 import Status from 'components/Appointment/Status.js';
+import Confirm from 'components/Appointment/Confirm';
 
 import useVisualMode from 'hooks/useVisualMode';
 
@@ -16,7 +17,7 @@ export default function Appointment (props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   // const STATUS = "STATUS";
-  // const CONFIRM = "CONFIRM";
+  const CONFIRM = "CONFIRM";
   // const ERROR = "ERROR";
   // const EDIT = "EDIT";
   const DELETING = "DELETING"
@@ -40,11 +41,19 @@ export default function Appointment (props) {
     
   }
 
-  function del () {
+  function confirmation () {
+
     console.log("DEL RUNNING")
     transition(DELETING);
     props.cancelInterview(props.id)
    .then(() => transition(EMPTY))
+    ///if confirmation outputs boolean
+    // button not pressed = false
+    //button pressed = true
+  }
+
+  function del () {
+    transition(CONFIRM)
   }
 
 
@@ -68,6 +77,14 @@ export default function Appointment (props) {
 
       {mode === DELETING && 
       <Status message={DELETING} />}
+
+      {mode === CONFIRM && 
+      <Confirm
+        message={"Delete the appointment?"}
+        onConfirm={confirmation}
+        onCancel={() => (back(SHOW))}
+         />}
+      
 
       {mode === CREATE && (    
         <Form 

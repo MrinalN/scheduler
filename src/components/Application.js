@@ -72,8 +72,7 @@ export default function Application(props) {
     }
   
     function cancelInterview (id) {
-      console.log('CANCEL INT CALLED')
-      // updating the state locally to reflect the remote deletion
+      // updaties the state locally to reflect the remote deletion
       const appointment = {
       ...state.appointments[id],
       interview: null
