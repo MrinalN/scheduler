@@ -4,6 +4,7 @@ import Header from 'components/Appointment/Header.js';
 import Show from 'components/Appointment/Show.js';
 import Empty from 'components/Appointment/Empty.js';
 import Form from 'components/Appointment/Form.js';
+
 import useVisualMode from 'hooks/useVisualMode';
 
 import './styles.scss';
@@ -25,16 +26,16 @@ export default function Appointment (props) {
     props.interview ? SHOW : EMPTY
   );
 
-  // const displayAppt = interview ? 
-  // <Show 
-  //   student={interview.student}
-  //   interviewer={interview.interviewer}
-  // /> : <Empty />
+  // console.log(props.interview)
+  
+  //CHECK WITH PAUL AND KATE IF THIS IS CORRECT??
+  const interviewersArr = [];
+  props.interview && interviewersArr.push(props.interview.interviewer)
+  // console.log(interviewersArr)
 
+  // props.interview ? console.log(props) : console.log('not')
 
-  // if (mode === EMPTY) {
-  //   transition(CREATE);
-  // }
+  //** let interviewersArr = getAppointmentsForDay(props, **HOW DO I GET DAY??? DAYLIST.day parent)
 
 
 
@@ -53,7 +54,7 @@ export default function Appointment (props) {
       )}
       {mode === CREATE && (    
         <Form 
-          interviewers={[]}
+          interviewers={props.interviewers}
           // onSave={() => ("onSave")}
           onCancel={() => (back(EMPTY))}
         />
