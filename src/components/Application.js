@@ -55,7 +55,7 @@ export default function Application(props) {
 
 
     function bookInterview(id, interview) {
-      // console.log(id, interview);
+      console.log(id, interview);
       const appointment = {
         ...state.appointments[id],
         interview: { ...interview }
@@ -64,12 +64,32 @@ export default function Application(props) {
         ...state.appointments,
         [id]: appointment
       };
-      setState({
+      return axios.put(`api/appointments/${id}`, appointment)
+      .then(() => setState({
         ...state,
         appointments
-      });
+      }))
     }
   
+    function cancelInterview (id) {
+      console.log('CANCEL INT CALLED')
+      // updating the state locally to reflect the remote deletion
+      const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.delete(`api/appointments/${id}`, appointment)
+    .then(() => setState({
+      ...state,
+      appointments
+    }))
+  }
+
+    
     return <Appointment 
     key={appointment.id} 
     {...appointment} 
@@ -78,6 +98,7 @@ export default function Application(props) {
     interview={interview}
     interviewers={interviewers}
     bookInterview={bookInterview}
+    cancelInterview={cancelInterview}
     />
   })
     

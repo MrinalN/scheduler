@@ -4,6 +4,7 @@ import Header from 'components/Appointment/Header.js';
 import Show from 'components/Appointment/Show.js';
 import Empty from 'components/Appointment/Empty.js';
 import Form from 'components/Appointment/Form.js';
+import Status from 'components/Appointment/Status.js';
 
 import useVisualMode from 'hooks/useVisualMode';
 
@@ -18,8 +19,9 @@ export default function Appointment (props) {
   // const CONFIRM = "CONFIRM";
   // const ERROR = "ERROR";
   // const EDIT = "EDIT";
+  const DELETING = "DELETING"
   const CREATE = "CREATE";
-  const SAVE = "SAVE";
+  const SAVING = "SAVING";
 
 
   const { mode, transition, back } = useVisualMode(
@@ -32,8 +34,17 @@ export default function Appointment (props) {
       student: name,
       interviewer
     };
+    transition(SAVING);
     props.bookInterview(props.id, interview)
-    transition(SHOW)
+   .then(() => transition(SHOW))
+    
+  }
+
+  function del () {
+    console.log("DEL RUNNING")
+    transition(DELETING);
+    props.cancelInterview(props.id)
+   .then(() => transition(EMPTY))
   }
 
 
@@ -48,8 +59,16 @@ export default function Appointment (props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={del}
         />
       )}
+
+      {mode === SAVING && 
+      <Status message={SAVING} />}
+
+      {mode === DELETING && 
+      <Status message={DELETING} />}
+
       {mode === CREATE && (    
         <Form 
           interviewers={props.interviewers}
@@ -57,9 +76,6 @@ export default function Appointment (props) {
           onCancel={() => (back(EMPTY))}
         />
       )}
-
-
-    {/* {displayAppt} */}
 
     </article>
 

@@ -18,6 +18,7 @@ import "components/InterviewerList.scss";
 // ));
 
 export default function InterviewerList (props) {
+console.log(props.interviewers)
   // const { id, name, avatar, selected } = props;
   const parsedInterviewers = props.interviewers.map(interviewer => {
     return <InterviewerListItem
