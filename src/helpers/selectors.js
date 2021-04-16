@@ -19,3 +19,9 @@ import InterviewerList from "components/InterviewerList";
       interviewer: state.interviewers[interview.interviewer]
     }
   }
+
+  export function getInterviewersForDay (state, day) {
+   let interviewersForDay = state.days.find(sDay => sDay.name === day);
+
+   return !interviewersForDay ? []: interviewersForDay.appointments.map(apptForDayIndex => state.appointments[apptForDayIndex]);
+  }
