@@ -23,5 +23,5 @@ import InterviewerList from "components/InterviewerList";
   export function getInterviewersForDay (state, day) {
    let interviewersForDay = state.days.find(sDay => sDay.name === day);
 
-   return !interviewersForDay ? []: interviewersForDay.appointments.map(apptForDayIndex => state.appointments[apptForDayIndex]);
+   return !interviewersForDay ? []: interviewersForDay.appointments.map(apptForDayIndex => state.interviewers[apptForDayIndex]);
   }
