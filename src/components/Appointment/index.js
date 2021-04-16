@@ -11,7 +11,7 @@ import './styles.scss';
 
 
 export default function Appointment (props) {
-  // const { time, interview } = props;
+  // const { time, interview } = props; bookInterview
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   // const STATUS = "STATUS";
@@ -19,24 +19,21 @@ export default function Appointment (props) {
   // const ERROR = "ERROR";
   // const EDIT = "EDIT";
   const CREATE = "CREATE";
-  // const SAVE = "SAVE";
+  const SAVE = "SAVE";
 
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
-  // console.log(props.interview)
-  
-  //CHECK WITH PAUL AND KATE IF THIS IS CORRECT??
-  const interviewersArr = [];
-  props.interview && interviewersArr.push(props.interview.interviewer)
-  // console.log(interviewersArr)
 
-  // props.interview ? console.log(props) : console.log('not')
-
-  //** let interviewersArr = getAppointmentsForDay(props, **HOW DO I GET DAY??? DAYLIST.day parent)
-
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    props.bookInterview(props.id, interview)
+  }
 
 
   return(
@@ -55,7 +52,7 @@ export default function Appointment (props) {
       {mode === CREATE && (    
         <Form 
           interviewers={props.interviewers}
-          // onSave={() => ("onSave")}
+          onSave={save}
           onCancel={() => (back(EMPTY))}
         />
       )}
