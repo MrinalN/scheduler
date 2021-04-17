@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export default function useVisualMode (initial) {
   const [mode, setMode] = useState(initial);
-  const [history, setHistory] = useState([initial]); 
+  const [history, setHistory] = useState([initial]);
 
   function transition (nextMode, replace = false) { 
     setMode(nextMode)
@@ -12,8 +12,7 @@ export default function useVisualMode (initial) {
   function back() {
     
       const newArr = [...history];
-      
-      // newArr.length > 1 ? newArr.pop() : console.log(`can't go back!`);
+
       newArr.length > 1 && newArr.pop();
 
       setMode(newArr[newArr.length - 1]);

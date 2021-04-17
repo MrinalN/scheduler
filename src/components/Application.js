@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+// import axios from 'axios';
 
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import "./Application.scss";
 import Appointment from "./Appointment/index.js";
 import DayList from "./DayList";
-
-
-// const axios = require('axios');
+import useApplicationData from 'hooks/useApplicationData.js';
 
 
 export default function Application(props) {
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {}
-  });
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
   
-  const setDay = day => setState({ ...state, day });
+  
+  // const [state, setState] = useState({
+  //   day: "Monday",
+  //   days: [],
+  //   appointments: {}
+  //   //add
+
+  // });
+  
+  
+  // const setDay = day => setState({ ...state, day });
 
   //displays daily appointments 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
@@ -25,26 +34,26 @@ export default function Application(props) {
 
   
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    let getDays = '/api/days'
-    let getAppointments = '/api/appointments'
-    let getInterviewers = '/api/interviewers'
+  //   let getDays = '/api/days'
+  //   let getAppointments = '/api/appointments'
+  //   let getInterviewers = '/api/interviewers'
 
-    Promise.all([
-      axios.get(getDays), 
-      axios.get(getAppointments), 
-      axios.get(getInterviewers)
-    ])
-    .then((all) => {
-      setState(prev => ({...prev, 
-        days: all[0].data, 
-        appointments: all[1].data, 
-        interviewers: all[2].data 
-      }));
-    });
+  //   Promise.all([
+  //     axios.get(getDays), 
+  //     axios.get(getAppointments), 
+  //     axios.get(getInterviewers)
+  //   ])
+  //   .then((all) => {
+  //     setState(prev => ({...prev, 
+  //       days: all[0].data, 
+  //       appointments: all[1].data, 
+  //       interviewers: all[2].data 
+  //     }));
+  //   });
     
-  }, [])
+  // }, [])
 
 
 
@@ -54,39 +63,39 @@ export default function Application(props) {
     // console.log(interviewers) 
 
 
-    function bookInterview(id, interview) {
-      console.log(id, interview);
-      const appointment = {
-        ...state.appointments[id],
-        interview: { ...interview }
-      };
-      const appointments = {
-        ...state.appointments,
-        [id]: appointment
-      };
-      return axios.put(`api/appointments/${id}`, appointment)
-      .then(() => setState({
-        ...state,
-        appointments
-      }))
-    }
+  //   function bookInterview(id, interview) {
+  //     console.log(id, interview);
+  //     const appointment = {
+  //       ...state.appointments[id],
+  //       interview: { ...interview }
+  //     };
+  //     const appointments = {
+  //       ...state.appointments,
+  //       [id]: appointment
+  //     };
+  //     return axios.put(`api/appointments/${id}`, appointment)
+  //     .then(() => setState({
+  //       ...state,
+  //       appointments
+  //     }))
+  //   }
   
-    function cancelInterview (id) {
-      // updaties the state locally to reflect the remote deletion
-      const appointment = {
-      ...state.appointments[id],
-      interview: null
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-    return axios.delete(`api/appointments/${id}`, appointment)
-    .then(() => setState({
-      ...state,
-      appointments
-    }))
-  }
+  //   function cancelInterview (id) {
+  //     // updaties the state locally to reflect the remote deletion
+  //     const appointment = {
+  //     ...state.appointments[id],
+  //     interview: null
+  //   };
+  //   const appointments = {
+  //     ...state.appointments,
+  //     [id]: appointment
+  //   };
+  //   return axios.delete(`api/appointments/${id}`, appointment)
+  //   .then(() => setState({
+  //     ...state,
+  //     appointments
+  //   }))
+  // }
     
     return <Appointment 
     key={appointment.id} 
