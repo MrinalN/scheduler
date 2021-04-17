@@ -87,7 +87,6 @@ export default function Application(props) {
       appointments
     }))
   }
-
     
     return <Appointment 
     key={appointment.id} 
