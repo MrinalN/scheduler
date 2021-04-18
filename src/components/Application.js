@@ -16,6 +16,7 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
   
+ 
   
   // const [state, setState] = useState({
   //   day: "Monday",
@@ -55,48 +56,21 @@ export default function Application(props) {
     
   // }, [])
 
-
+  
 
   const parsedAppointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
     const interviewers = getInterviewersForDay(state, state.day);
-    // console.log(interviewers) 
+    //if state.day === state.interview.name
+    // if state.appointments[appointment.id].interview is true then spots -1. Spots can't be less than 0. 
+    //if state.appointments[appointment.id].interview is false then spots +1. Spots can't be less than 0. 
+    // console.log(state.appointments[appointment.id].interview)
+    // console.log("STATE.DAYS =", state.days)
+    //THIS HAPPENS IN USEAPPDATA!!!
+    // console.log(state)
 
-
-  //   function bookInterview(id, interview) {
-  //     console.log(id, interview);
-  //     const appointment = {
-  //       ...state.appointments[id],
-  //       interview: { ...interview }
-  //     };
-  //     const appointments = {
-  //       ...state.appointments,
-  //       [id]: appointment
-  //     };
-  //     return axios.put(`api/appointments/${id}`, appointment)
-  //     .then(() => setState({
-  //       ...state,
-  //       appointments
-  //     }))
-  //   }
   
-  //   function cancelInterview (id) {
-  //     // updaties the state locally to reflect the remote deletion
-  //     const appointment = {
-  //     ...state.appointments[id],
-  //     interview: null
-  //   };
-  //   const appointments = {
-  //     ...state.appointments,
-  //     [id]: appointment
-  //   };
-  //   return axios.delete(`api/appointments/${id}`, appointment)
-  //   .then(() => setState({
-  //     ...state,
-  //     appointments
-  //   }))
-  // }
-    
+  
     return <Appointment 
     key={appointment.id} 
     {...appointment} 

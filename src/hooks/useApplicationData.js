@@ -39,7 +39,7 @@ export default function useApplicationData() {
 
 
   function bookInterview(id, interview) {
-    console.log(id, interview);
+    // console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -48,15 +48,26 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+
+    //print an array copy
+    const days = [...state.days].map(day => (
+      {...day}
+      ));
+
+    // 
+    const matchDayObj = days.filter((day) => state.day === day.name)[0]
+    matchDayObj.spots--
+
     return axios.put(`api/appointments/${id}`, appointment)
     .then(() => setState({
       ...state,
-      appointments
+      appointments,
+      days
     }))
   }
 
   function cancelInterview (id) {
-    // updaties the state locally to reflect the remote deletion
+   // updaties the state locally to reflect the remote deletion
     const appointment = {
     ...state.appointments[id],
     interview: null
@@ -65,10 +76,33 @@ export default function useApplicationData() {
     ...state.appointments,
     [id]: appointment
   };
+
+  const days = [...state.days]
+
+  const matchDayObj = days.filter((day) => state.day === day.name)[0]
+  matchDayObj.spots++
+
+//  console.log("MATCH DAY: ", matchDay)
+
+  
+      //TEMPLATE update the value of spots 
+  // const newDay = { 
+  //   ...matchDay,
+  //   spots: matchDay.spots + 1
+  // };
+
+  // const newDays = {
+  //   days
+  //   [id]: appointment
+  // };
+
+  // console.log(appointment) 
+  // console.log(state.days[id].spots)
   return axios.delete(`api/appointments/${id}`, appointment)
   .then(() => setState({
     ...state,
-    appointments
+    appointments,
+    days
   }))
 }
 return { 
