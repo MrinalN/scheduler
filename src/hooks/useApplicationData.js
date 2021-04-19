@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 
@@ -39,7 +39,7 @@ export default function useApplicationData() {
 
 
   function bookInterview(id, interview) {
-    // console.log(id, interview);
+ 
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -49,15 +49,17 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    //print an array copy
+    //print an array copy so not to mutate original state
     const days = [...state.days].map(day => (
       {...day}
       ));
 
-    // 
+    // alter object in copy
     const matchDayObj = days.filter((day) => state.day === day.name)[0]
-    matchDayObj.spots--
+    if(!state.appointments[id].interview) {matchDayObj.spots--}
+    
 
+    //setState
     return axios.put(`api/appointments/${id}`, appointment)
     .then(() => setState({
       ...state,
@@ -82,22 +84,6 @@ export default function useApplicationData() {
   const matchDayObj = days.filter((day) => state.day === day.name)[0]
   matchDayObj.spots++
 
-//  console.log("MATCH DAY: ", matchDay)
-
-  
-      //TEMPLATE update the value of spots 
-  // const newDay = { 
-  //   ...matchDay,
-  //   spots: matchDay.spots + 1
-  // };
-
-  // const newDays = {
-  //   days
-  //   [id]: appointment
-  // };
-
-  // console.log(appointment) 
-  // console.log(state.days[id].spots)
   return axios.delete(`api/appointments/${id}`, appointment)
   .then(() => setState({
     ...state,
@@ -105,6 +91,7 @@ export default function useApplicationData() {
     days
   }))
 }
+
 return { 
   state,
   setDay,
