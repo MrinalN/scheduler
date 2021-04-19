@@ -25,3 +25,10 @@ import InterviewerList from "components/InterviewerList";
 
    return !interviewersForDay ? []: interviewersForDay.appointments.map(apptForDayIndex => state.interviewers[apptForDayIndex]);
   }
+
+//SPOTS FOR DAY function
+  // export function getSpotsForDay(state, day) {
+  //   let spotsForDay = state.days.find(sDay => sDay.name === day);
+
+  //   return !appointmentsForDay ? []: appointmentsForDay.appointments.map(spotsForDayIndex => state.appointments[spotsForDayIndex]);
+  // }
