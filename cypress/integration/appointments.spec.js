@@ -1,4 +1,3 @@
-// const { should } = require("chai");
 
 describe("Appointments", () => {
   beforeEach(() => {
@@ -40,10 +39,6 @@ describe("Appointments", () => {
       cy.contains(".appointment__card--show", "Lydia Miller-Jones");
       cy.contains(".appointment__card--show", "Tori Malcolm");
   });
-//   Visits the root of our web server
-// Clicks the delete button for the existing appointment
-// Clicks the confirm button
-// Sees that the appointment slot is empty
 
     it("should cancel an interview", () => {
       // Clicks on the "Delete" button in the second appointment
