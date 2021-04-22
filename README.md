@@ -1,14 +1,14 @@
 # Interview Scheduler
-A single-page React-centric booking app that allows users to customize appointments with interviewers. Utilizes tools such as Webpack, Babel, Storybook, Jest and Cypress
+A single-page React booking app that allows users to customize appointments. Utilizes Webpack module bundler, Babel and testing platforms like Storybook, Jest and Cypress.
 
 ## Final Product
 
-My Urls database preview
-!["My Urls database preview"](https://github.com/MrinalN/tinyapp/blob/master/docs/urls_page.png?raw=true)
+Overview
+!["Booking Booked Open"](https://github.com/MrinalN/scheduler/blob/master/docs/BookingOpenBooked.png?raw=true)
  
 
-Tablet login screen preview
-!["Tablet login screen preview"](https://github.com/MrinalN/tinyapp/blob/master/docs/sm_screen_login.png?raw=true)
+Fail safes
+!["Managing prompts"](https://github.com/MrinalN/scheduler/blob/master/docs/BookingState.png?raw=true)
 
 ## Setup
 - Install dependencies with $`npm install`.
