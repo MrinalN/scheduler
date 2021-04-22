@@ -21,9 +21,10 @@ import InterviewerList from "components/InterviewerList";
   }
 
   export function getInterviewersForDay (state, day) {
-   let interviewersForDay = state.days.find(sDay => sDay.name === day);
+   let currentDay = state.days.find(sDay => sDay.name === day);
+   console.log('CURRENT DAY FUNC:',currentDay)
 
-   return !interviewersForDay ? []: interviewersForDay.appointments.map(apptForDayIndex => state.interviewers[apptForDayIndex]);
+   return !currentDay ? []: currentDay.interviewers.map(apptForDayIndex => state.interviewers[apptForDayIndex]);
   }
 
 //SPOTS FOR DAY function

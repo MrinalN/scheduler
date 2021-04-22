@@ -7,9 +7,9 @@ describe("Navigation", () => {
     cy.visit("/");
     // cy.get("li").contains("Tuesday");
     cy.contains("li", "Tuesday")
-    .click()
-    .should("have.class", "day-list__item--selected");
-    //find day that contains "Tuesday"
     //Click on it
+    .click()
+    //Should now appear selected
+    .should("have.class", "day-list__item--selected");
   });
 });
