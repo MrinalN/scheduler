@@ -31,4 +31,4 @@ Navigation
 
 ## Acknowledgements
 
-Thanks for checking out my first React project at Lighthouse Labs as an emerging Web Dev! Props to LHL for the provocation. Kate and Paul for sharing their learning.
+Thanks for checking out my first React project at Lighthouse Labs as an emerging Web Dev! Props to LHL for the provocation. Kate and Paul for sharing their own project "bug collection".
