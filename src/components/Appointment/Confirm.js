@@ -1,6 +1,4 @@
 import React from 'react';
-
-//buttons imported from other file
 import Button from '../Button.js'
 
 

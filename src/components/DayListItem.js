@@ -6,6 +6,7 @@ import "components/DayListItem.scss"
 
 
 export default function DayListItem(props) {
+
   const { name, spots, selected, setDay } = props
   const formatSpots = () => {
       if(spots > 1) {
@@ -26,4 +27,5 @@ export default function DayListItem(props) {
       <h3 className="text--light">{formatSpots()}</h3>
     </li>
   );
+  
 }

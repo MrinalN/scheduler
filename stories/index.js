@@ -18,12 +18,10 @@ import Show from "components/Appointment/Show.js"
 import Confirm from "components/Appointment/Confirm.js"
 import Status from "components/Appointment/Status.js"
 import Error from "components/Appointment/Error.js"
-// import Edit from "components/Appointment/Form.js"
-// import Create from "components/Appointment/Form.js"
 import Form from "components/Appointment/Form.js"
 
 
-//input data
+//input data for stories simulations
 const days = [
   {
     id: 1,
