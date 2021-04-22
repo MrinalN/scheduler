@@ -20,12 +20,21 @@ import InterviewerList from "components/InterviewerList";
     }
   }
 
-  export function getInterviewersForDay (state, day) {
-   let currentDay = state.days.find(sDay => sDay.name === day);
-   console.log('CURRENT DAY FUNC:',currentDay)
-
-   return !currentDay ? []: currentDay.interviewers.map(apptForDayIndex => state.interviewers[apptForDayIndex]);
+  export function getInterviewersForDay(state, day) {
+    const currentDay = state.days.find(sDay => day === sDay.name);
+  
+    if (state.days.length === 0 || currentDay === undefined) return [];
+  
+    return currentDay.interviewers.map(id => state.interviewers[id]);
   }
+
+  // export function getInterviewersForDay (state, day) {
+  //  let currentDay = state.days.find(sDay => sDay.name === day);
+  //  console.log('CURRENT DAY FUNC:',currentDay)
+
+  //  return !currentDay ? []: console.log(currentDay.interviewers.map(apptForDayIndex => state.interviewers[apptForDayIndex]));
+   
+  // }
 
 //SPOTS FOR DAY function
   // export function getSpotsForDay(state, day) {
