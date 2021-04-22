@@ -11,7 +11,7 @@ Error catch
 !["Managing prompts"](https://github.com/MrinalN/scheduler/blob/master/docs/BookingState.png?raw=true)
 
 Navigation
-!["Navigation"](https://github.com/MrinalN/scheduler/blob/master/docs/BookingState.png?raw=true)
+!["Navigation"](https://github.com/MrinalN/scheduler/blob/master/docs/Navigation.png?raw=true)
 ## Setup
 - Install dependencies with $`npm install`.
 - To run Webpack Development Server $`npm start`.
