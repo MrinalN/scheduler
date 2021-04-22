@@ -7,9 +7,11 @@ Overview
 !["Booking Booked Open"](https://github.com/MrinalN/scheduler/blob/master/docs/BookingOpenBooked.png?raw=true)
  
 
-Fail safes
+Error catch
 !["Managing prompts"](https://github.com/MrinalN/scheduler/blob/master/docs/BookingState.png?raw=true)
 
+Navigation
+!["Navigation"](https://github.com/MrinalN/scheduler/blob/master/docs/BookingState.png?raw=true)
 ## Setup
 - Install dependencies with $`npm install`.
 - To run Webpack Development Server $`npm start`.
@@ -24,3 +26,7 @@ Fail safes
 - @testing-library/react-hooks
 - react-test-renderer
 - cypress
+
+## Acknowledgements
+
+Thanks for checking out my first React project at Lighthouse Labs as an emerging Web Dev! Props to LHL for the provocation. Kate and Paul for sharing their learning.
