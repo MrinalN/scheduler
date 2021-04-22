@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '../Button.js'
 
 
-
 export default function Confirm (props) {
   const { message, onConfirm, onCancel } = props;
   return (

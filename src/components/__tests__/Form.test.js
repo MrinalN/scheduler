@@ -59,10 +59,6 @@ describe("Form", () => {
 
     fireEvent.click(getByText("Save"));
 
-    // expect(queryByText(/Interviewer must be selected/i)).toBeInTheDocument();
-    // expect(onSave).not.toHaveBeenCalled();
-
-
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
   });

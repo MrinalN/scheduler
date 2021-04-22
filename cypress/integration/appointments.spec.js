@@ -18,7 +18,7 @@ describe("Appointments", () => {
       cy.get("[alt='Sylvia Palmer']")
       .click()
       // Clicks the save button
-      cy.contains('Save').click()
+      cy.contains('Save').click();
       // Sees the booked appointment
       cy.contains(".appointment__card--show", "Lydia Miller-Jones");
       cy.contains(".appointment__card--show", "Sylvia Palmer");
@@ -34,7 +34,7 @@ describe("Appointments", () => {
       // Chooses an interviewer
       cy.get("[alt='Tori Malcolm']").click();
       // Clicks the save button
-      cy.contains('Save').click()
+      cy.contains('Save').click();
       // Sees the booked appointment
       cy.contains(".appointment__card--show", "Lydia Miller-Jones");
       cy.contains(".appointment__card--show", "Tori Malcolm");
@@ -45,9 +45,9 @@ describe("Appointments", () => {
       cy.get("[alt=Delete]")
       .click({ force: true });
       // Checks if Confirm screen pops up
-      cy.contains(".appointment__card", 'Delete the appointment?')
+      cy.contains(".appointment__card", 'Delete the appointment?');
       // Clicks the confirm button
-      cy.contains('Confirm').click()
+      cy.contains('Confirm').click();
       // Sees the booked appointment does not exist
       cy.contains('.appointment__card--show', "Archie Cohen").should('not.exist');
     });

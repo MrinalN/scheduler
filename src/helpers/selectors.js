@@ -1,4 +1,3 @@
-import InterviewerList from "components/InterviewerList";
 
   /* Locates appointments array in day that matches parameter input. Returns empty array if not found.  */
   export function getAppointmentsForDay(state, day) {

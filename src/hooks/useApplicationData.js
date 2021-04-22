@@ -55,8 +55,8 @@ export default function useApplicationData() {
       ));
 
     /* alter object in copy */
-    const matchDayObj = days.filter((day) => state.day === day.name)[0]
-    if(!state.appointments[id].interview) {matchDayObj.spots--}
+    const matchDayObj = days.filter((day) => state.day === day.name)[0];
+    if(!state.appointments[id].interview) {matchDayObj.spots--};
     
 
     /* setState */
@@ -79,10 +79,10 @@ export default function useApplicationData() {
     [id]: appointment
   };
 
-  const days = [...state.days]
+  const days = [...state.days];
 
-  const matchDayObj = days.filter((day) => state.day === day.name)[0]
-  matchDayObj.spots++
+  const matchDayObj = days.filter((day) => state.day === day.name)[0];
+  matchDayObj.spots++;
 
   return axios.delete(`api/appointments/${id}`, appointment)
   .then(() => setState({
