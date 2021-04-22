@@ -40,7 +40,7 @@ export default function Appointment (props) {
     transition(SAVING);
     props.bookInterview(props.id, interview)
    .then(() => transition(SHOW))
-   .catch(error => transition(ERROR_DELETE, true));
+   .catch(error => transition(ERROR_SAVE, true));
   }
 
   function confirmation () {
@@ -49,7 +49,7 @@ export default function Appointment (props) {
     transition(DELETING, true);
     props.cancelInterview(props.id)
    .then(() => transition(EMPTY))
-   .catch(error => transition(ERROR_SAVE, true));
+   .catch(error => transition(ERROR_DELETE, true));
     ///if confirmation outputs boolean
     // button not pressed = false
     //button pressed = true
@@ -112,6 +112,7 @@ export default function Appointment (props) {
             onCancel={() => (back(SHOW))}
           />
         )}
+
 
 {mode === ERROR_SAVE && (
         <Error
