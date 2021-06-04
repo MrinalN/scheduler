@@ -1,4 +1,4 @@
-# Interview Scheduler 📆
+# Interview Scheduler
 
 [>> View Live Demo >>](a-scheduler-lhl.netlify.app)
 
