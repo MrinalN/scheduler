@@ -11,7 +11,7 @@ export default function Application() {
 
   const {
     state,
-    // setDay,
+    setDay,
     bookInterview,
     cancelInterview
   } = useApplicationData();
