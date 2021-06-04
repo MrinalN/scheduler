@@ -1,3 +1,5 @@
+![>> View Live Demo >>](a-scheduler-lhl.netlify.app)
+
 # Interview Scheduler
 A single-page React booking app that allows users to customize appointments. Utilizes Webpack module bundler, Babel and testing platforms like Storybook, Jest and Cypress.
 
